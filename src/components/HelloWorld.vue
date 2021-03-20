@@ -15,24 +15,23 @@ export default {
   methods: {
     getCoordinate(rowIndex,columnIndex) {
       this.counter = this.counter + 1
-      console.log(rowIndex,columnIndex, this.counter)
+      // console.log(rowIndex,columnIndex, this.counter)
       if (this.counter % 2 === 0) {
         this.matrix[rowIndex].splice(columnIndex,1,1)
       } else if (this.counter % 2 !== 0) {
         this.matrix[rowIndex].splice(columnIndex,1,2)
       }
-      console.log(this.matrix)
-      // console.log(this.matrix[2].slice())
-      // for (let i in this.matrix) {
-      //   for (let j in this.matrix[i].slice()[j]) {
-      //       console.log(j)
-      //     //  if (this.matrix[2].slice[j] === 2){
-      //     //   console.log("circle")
-      //     // } else {
-      //     //   console.log('cross')
-      //     // }
-      //   }
-      // }
+      for (let i = 0; i < this.matrix.length; i++) {
+              console.log("uraaaaaaaaaaaaaaaaaaa", this.matrix[i][0])
+        for (let j = 0; j < this.matrix[i].length; j++) {
+          if (this.counter === 5) {
+            console.log(this.matrix[i][j])
+            if (this.matrix[i][0] === 2 || this.matrix[i][0] === 1) {
+              console.log(this.matrix)
+            }
+          }
+        }
+      }
     }
   },
   mounted() {
@@ -101,6 +100,7 @@ h3 {
 
 .tictaktoe {
   display: flex;
+  /*transform: rotate(90deg);*/
   justify-content: center;
   margin: 0 auto;
 }
