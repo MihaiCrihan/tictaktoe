@@ -7,7 +7,18 @@ export default {
       [0, 0, 0],
       [0, 0, 0],
       [0, 0, 0]
-    ]
+    ],
+    winCombination: [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ],
+    gameState: ["", "", "", "", "", "", "", "", ""]
   }),
   props: {
     msg: String
@@ -21,18 +32,30 @@ export default {
       } else if (this.counter % 2 !== 0) {
         this.matrix[rowIndex].splice(columnIndex,1,2)
       }
-      for (let i = 0; i < this.matrix.length; i++) {
-              console.log("uraaaaaaaaaaaaaaaaaaa", this.matrix[i][0])
-        for (let j = 0; j < this.matrix[i].length; j++) {
-          if (this.counter === 5) {
-            console.log(this.matrix[i][j])
-            if (this.matrix[i][0] === 2 || this.matrix[i][0] === 1) {
-              console.log(this.matrix)
-            }
-          }
+        // this.matrix.forEach((item, index) => {
+        //   if (
+        //       this.counter > 3 &&
+        //       ([...new Set(item)].length <= 1 ||
+        //       [...new Set([this.matrix[0][index], this.matrix[1][index], this.matrix[2][index]])].length <= 1)
+        //   ) {
+        //     console.log("win!");
+        //   }
+        // });
+      this.winCombination.forEach((item, index) => {
+        const winCondition = item[index];
+        const a = this.gameState[winCondition[0]];
+        const b = this.gameState[winCondition[1]];
+        const c = this.gameState[winCondition[2]];
+        console.log(this.gameState[winCondition[0]]);
+        if (a === '' || b === '' || c === '') {
+          console.log("ce")
         }
-      }
+        if (a === b && b === c) {
+          console.log("a cistigat")
+        }
+      })
     }
+
   },
   mounted() {
   }
